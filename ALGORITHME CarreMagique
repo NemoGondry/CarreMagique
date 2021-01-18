@@ -1,0 +1,62 @@
+ALGORITHME CarreMagique
+
+VAR tour : ENTIER
+	tableau : carre [1...5, 1...5] de ENTIER
+
+procedure initialisation
+
+VAR
+    x,y : ENTIER
+DEBUT
+    POUR x DE 1 A 5 FAIRE
+        POUR y DE 1 A 5 FAIRE
+            Tableau[x,y] <-- 0
+        FINPOUR
+    FINPOUR
+FIN
+
+procedure composition
+
+DEBUT
+
+x <-- 3
+y <-- 2
+tableau[x,y] <-- 1
+
+	POUR tour DE 2 A 25 FAIRE
+		x <-- x + 1
+		y <-- y - 1
+	    
+		SI tableau [x,y] <> 0 ALORS
+			y <-- y - 1
+			x <-- x - 1
+		FINSI
+		
+		SI y < 1 ALORS
+			y := 5;
+		FINSI
+			
+		SI x > 5 ALORS
+			x := 1;
+		FINSI
+				
+		SI x < 1 ALORS
+			x := 5;
+		FINSI
+			
+		tableau [x,y] <-- tour
+	FINPOUR
+FIN
+
+DEBUT
+
+tour <-- 1
+initialisation
+composition
+
+POUR x DE 1 A 5 FAIRE
+	POUR y DE 1 A 5 FAIRE
+	ECRIRE (tableau[x,y] + "|")
+	FINPOUR
+FINPOUR
+FIN.
